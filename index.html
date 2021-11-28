@@ -15,9 +15,9 @@
             </nav>
         </header>
         <main>
-            <section>
+            <section id="start" class="quiz-section">
                 <h1>The Coding Quiz</h1>
-                <p>
+                <p class="quiz-text">
                 Answer the code related questions within the time limit.
                 <br>
                 Every time you miss a question your score/time will be penalized by 10 seconds.
@@ -25,6 +25,11 @@
                 Goodluck! 
                 </p>
                 <button class="start-quiz" id="start-btn">Start Quiz</button>
+            </section>
+            <section id="quiz-questions" class="actual-quiz-section">
+                <p id="timer">Time: <span id="time-remaining">0</span></p>
+                <h1 id="question">Quiz Questions</h1>
+                <ul id="choices"></ul>
             </section>
         </main>
     </body>
