@@ -46,6 +46,36 @@ let choiceStatusTimeout;
 start_btn.addEventListener('click', startGame);
 choices.addEventListener('click', processChoice);
 submit_score.addEventListener('submit', processInput);
+//function to start the game
+function startGame() {
+    showElement(quiz_sections, quiz_section);
+    
+    displayTime();  
+    displayQuestion();
+  
+    startTimer();
+  } 
+// function to show and hide certain elements
+  function showElement(siblingList, showElement) {
+    for (element of siblingList) {
+      hideElement(element);
+    }
+    showElement.classList.remove("hidden");
+  } 
+  
+  function hideElement(element) {
+    if (!element.classList.contains("hidden")) {
+      element.classList.add("hidden");
+    }
+  }
+//function is for when the user answers a question.
+  function processChoice(event) {
+    const userChoice = parseInt(event.target.parentElement.dataset.index);
+  
+    resetChoiceStatusEffects();
+    checkChoice(userChoice);
+    getNextQuestion();
+  }
 
 
 
