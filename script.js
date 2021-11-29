@@ -37,5 +37,15 @@ var questions_4 = new questions("String values must be enclosed within _____ whe
 var questions_5 = new questions("A very useful tool used during development and debugging for printing content to the debugger is: ", 
   ["JavaScript", "Terminal/Bash", "For Loops", "console.log"], 3);
 var question_list = [questions_1, questions_2, questions_3, questions_4, questions_5];
+//declaring blocked local scope var
+let currentQuestions = 0;
+let totalTime = 75;
+let totalTimeInterval;
+let choiceStatusTimeout;
+//our event listeners for start button, choices and submitting the score.
+start_btn.addEventListener('click', startGame);
+choices.addEventListener('click', processChoice);
+submit_score.addEventListener('submit', processInput);
+
 
 
