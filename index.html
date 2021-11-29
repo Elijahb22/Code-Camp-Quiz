@@ -15,6 +15,7 @@
             </nav>
         </header>
         <main>
+            <!-- Starting screen for quiz-->
             <section id="start" class="quiz-section">
                 <h1>The Coding Quiz</h1>
                 <p class="quiz-text">
@@ -26,10 +27,22 @@
                 </p>
                 <button class="start-quiz" id="start-btn">Start Quiz</button>
             </section>
+            <!--All the questions throughout the quiz-->
             <section id="quiz-questions" class="actual-quiz-section">
                 <p id="timer">Time: <span id="time-remaining">0</span></p>
                 <h1 id="question">Quiz Questions</h1>
                 <ul id="choices"></ul>
+            </section>
+            <!--End of Quiz-->
+            <section id="end" class="End-quiz">
+                <h1 id="end-title">Quiz completed</h1>
+                <p id="score-text">You scored: <span id="score">0</span></p>
+                    <form id="submit-score">
+                        <label for="initials">Enter initials:</label>
+                        <input type="text" id="initials">
+                        <button type="submit">Submit</button>
+                        <p id="error-message"></p>
+                    </form>
             </section>
         </main>
     </body>
