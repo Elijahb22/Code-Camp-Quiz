@@ -80,12 +80,30 @@ function startGame() {
             checkTime();
         }, 1000);
     }
-  
+// declares when the timer is up  
     function checkTime() {
         if (totalTime <= 0) {
             totalTime = 0;
             endGame();
         }
+    }
+//displays question
+    function displayQuestion() {
+        question.textContent = question_list[currentQuestions].question;
+        displayChoiceList();
+    }
+// displays choice list
+    function displayChoiceList() {
+        choices.innerHTML = "";
+  
+        question_list[currentQuestions].choices.forEach(function(answer, index) {
+            var li = document.createElement("li");
+            li.dataset.index = index;
+            var button = document.createElement("button");
+            button.textContent = (index + 1) + ". " + answer;
+            li.appendChild(button);
+            choices.appendChild(li);
+        });
     }
 //function is for when the user answers a question.
   function processChoice(event) {
