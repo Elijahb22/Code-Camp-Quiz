@@ -68,9 +68,28 @@ function startGame() {
       element.classList.add("hidden");
     }
   }
+//Displays current time 
+    function displayTime() {
+        time_remaining.textContent = totalTime;
+    }
+//Starts timer for questions
+    function startTimer() {
+        totalTimeInterval = setInterval(function() {
+            totalTime--;
+            displayTime();
+            checkTime();
+        }, 1000);
+    }
+  
+    function checkTime() {
+        if (totalTime <= 0) {
+            totalTime = 0;
+            endGame();
+        }
+    }
 //function is for when the user answers a question.
   function processChoice(event) {
-    const userChoice = parseInt(event.target.parentElement.dataset.index);
+    var userChoice = parseInt(event.target.parentElement.dataset.index);
   
     resetChoiceStatusEffects();
     checkChoice(userChoice);
