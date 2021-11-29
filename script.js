@@ -108,7 +108,6 @@ function startGame() {
 //function is for when the user answers a question.
   function processChoice(event) {
     var userChoice = parseInt(event.target.parentElement.dataset.index);
-  
     resetChoiceStatusEffects();
     checkChoice(userChoice);
     getNextQuestion();
@@ -119,6 +118,14 @@ function startGame() {
         clearTimeout(choiceStatusTimeout);
         styleTimeRemainingDefault();
     }
+    function styleTimeRemainingDefault() {
+        time_remaining.style.color = "#4616E8";
+      }
+      
+      function styleTimeRemainingWrong() {
+        time_remaining.style.color = "#E81648";
+      }
+      
 // check whether the user choice the correct or incorrect choice
   function checkChoice(userChoice) {
         if (isChoiceCorrect(userChoice)) {
@@ -168,6 +175,70 @@ function startGame() {
           displayQuestion();
         }
     }
-
+//End game
+    function endGame() {
+        clearInterval(totalTimeInterval);
+        showElement(quiz_sections, end_section);
+        displayScore();
+        setEndHeading();
+    }
+//displays final score
+    function displayScore() {
+        score.textContent = totalTime;
+    }
+// determines whether user ran out of time or finished the quiz 
+    function setEndHeading() {
+        if (totalTime === 0) {
+            end_title.textContent = "Sorry! time out!";
+        } 
+        else {
+            end_title.textContent = "Congrats! Your done!";
+        }
+    }
+// inputs initials with the users score on the highscores
+    function processInput(event) {
+        event.preventDefault();
+      
+        var initials = inital_input.value.toUpperCase();
+      
+        if (isInputValid(initials)) {
+          var score = totalTime;
+          var highscoreEntry = getNewHighscoreEntry(initials, score);
+          saveHighscoreEntry(highscoreEntry);
+          window.location.href= "./highscores.html";
+        }
+      }
+    
+      function getNewHighscoreEntry(initials, score) {
+        var entry = {
+          initials: initials,
+          score: score,
+        }
+        return entry;
+      }
+      
+      function isInputValid(initials) {
+        let errorMessage = "";
+        if (initials === "") {
+          errorMessage = "You can't submit empty initials!";
+          displayFormError(errorMessage);
+          return false;
+        } 
+        else if (initials.match(/[^a-z]/ig)) {
+          errorMessage = "Initials may only include letters."
+          displayFormError(errorMessage);
+          return false;
+        } 
+        else {
+          return true;
+        }
+      }
+//saves new highscores
+      function saveHighscoreEntry(highscoreEntry) {
+        const currentScores = getScoreList();
+        placeEntryInHighscoreList(highscoreEntry, currentScores);
+        localStorage.setItem('scoreList', JSON.stringify(currentScores));
+      }
+      
 
 
