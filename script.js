@@ -114,5 +114,60 @@ function startGame() {
     getNextQuestion();
   }
 
+//Displays choices status
+  function resetChoiceStatusEffects() {
+        clearTimeout(choiceStatusTimeout);
+        styleTimeRemainingDefault();
+    }
+// check whether the user choice the correct or incorrect choice
+  function checkChoice(userChoice) {
+        if (isChoiceCorrect(userChoice)) {
+          displayCorrectChoiceEffects();
+        } 
+        else {
+          displayWrongChoiceEffects();
+        }
+    }
+// confirms the correct choice     
+    function isChoiceCorrect(choice) {
+        return choice === question_list[currentQuestions].indexOfCorrectChoice;
+    }
+// confirms the wrong choice and its effects     
+    function displayWrongChoiceEffects() {
+        deductTimeBy(10);
+      
+        styleTimeRemainingWrong();
+        showElement(choice_status, wrong);
+      
+        choiceStatusTimeout = setTimeout(function() {
+          hideElement(wrong);
+          styleTimeRemainingDefault();
+        }, 1000);
+    }
+//deducts the time by 10 for chooseing the wrong choice     
+    function deductTimeBy(seconds) {
+        totalTime -= seconds;
+        checkTime();
+        displayTime();
+    }
+//displays the correct choice effects      
+    function displayCorrectChoiceEffects() {
+        showElement(choice_status, correct);
+      
+        choiceStatusTimeout = setTimeout(function() {
+          hideElement(correct);
+        }, 1000);
+    }
+      
+//Goes to the next question
+    function getNextQuestion() {
+        currentQuestions++;
+        if (currentQuestions >= question_list.length) {
+          endGame();
+        } else {
+          displayQuestion();
+        }
+    }
+
 
 
