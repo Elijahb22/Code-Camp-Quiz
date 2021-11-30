@@ -7,49 +7,43 @@
     </head>
     <body>
         <header>
-            <nav class="navbar">
-                <a class="nav-score" href="">View High Scores</a>
-                <section class="nav-time" id="time-nav">
-                    Time: 75seconds
-                </section>
+            <nav>
+              <a href="highscores.html">View Highscores</a>
             </nav>
-        </header>
-        <main>
-            <!-- Starting screen for quiz-->
+          </header>
+          <main>
             <section id="start" class="quiz-section">
-                <h1>The Coding Quiz</h1>
-                <p class="quiz-text">
-                Answer the code related questions within the time limit.
-                <br>
-                Every time you miss a question your score/time will be penalized by 10 seconds.
-                <br>
-                Goodluck! 
-                </p>
-                <button class="start-quiz" id="start-btn">Start Quiz</button>
+              <h1>Coding Camp Quiz</h1>
+              <p>Quiz your knowledge of JavaScript!</p>
+              <p>
+                You have 60 seconds to answer 5 questions. Answering a question wrong will result
+                in 10 secondsgets deducted from your total time.
+              </p>
+              <p>Your final score is the amount of time you have left. If the timer hits zero you lose.</p>
+              <button id="start-btn">Start Quiz</button>
             </section>
-            <!--All the questions throughout the quiz-->
-            <section id="quiz-questions" class="actual-quiz-section">
-                <p id="timer">Time: <span id="time-remaining">0</span></p>
-                <h1 id="question">Quiz Questions</h1>
-                <ul id="choices"></ul>
+            <section id="quiz-questions" class="hidden quiz-section">
+              <p id="timer">Time: <span id="time-remaining">0</span></p>
+              <h1 id="question">Quiz Question</h1>
+              <ul id="choices"></ul>
             </section>
-            <!--End of Quiz-->
-            <section id="end" class="End-quiz">
-                <h1 id="end-title">Quiz completed</h1>
-                <p id="score-text">You scored: <span id="score">0</span></p>
-                    <form id="submit-score">
-                        <label for="initials">Enter initials:</label>
-                        <input type="text" id="initials">
-                        <button type="submit">Submit</button>
-                        <p id="error-message"></p>
-                    </form>
+            <section id="end" class="quiz-section hidden">
+              <h1 id="end-title">Quiz completed</h1>
+              <p id="score-text">Your score is: <span id="score">0</span></p>
+              <form id="submit-score">
+                <label for="initials">Enter initials:</label>
+                <input type="text" id="initials">
+                <button type="submit">Submit</button>
+                <p id="error-message"></p>
+              </form>
+              <a href="index.html" class="back-button">Back to quiz</a>
             </section>
             <div>
-                <p id="correct" class="choice-status">Correct!</p>
-                <p id="wrong" class="choice-status">Wrong!</p>
+              <p id="correct" class="choice-status hidden"><i class="fas fa-check-circle" aria-hidden="true"></i>Correct!</p>
+              <p id="wrong" class="choice-status hidden"><i class="fas fa-times-circle" aria-hidden="true"></i>Wrong!</p>
             </div>
-        </main>
-        <script src="script.js"></script>
+          </main>
+        <script src="script.js" ></script>
     </body>
 
 </html>
