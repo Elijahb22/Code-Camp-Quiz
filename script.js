@@ -183,7 +183,7 @@ function getNextQuestion() {
   }
 }
 
-/******** ENDING THE GAME ********/ 
+// end game function 
 function endGame() {
   clearInterval(totalTimeInterval);
   
@@ -214,7 +214,7 @@ function processInput(event) {
     var score = totalTime;
     var highscoreEntry = getNewHighscoreEntry(initials, score);
     saveHighscoreEntry(highscoreEntry);
-    window.location.href= "./highscores.html";
+    window.location.href= "highscore.html";
   }
 }
 
